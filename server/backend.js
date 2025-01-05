@@ -9,7 +9,7 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 const mongoUrl =
-  'mongodb+srv://admin:P@ssw0rd1+-@cluster0.2lfz3.mongodb.net/Meghawebsite';
+  'mongodb+srv://admin:admin@cluster0.2lfz3.mongodb.net/Meghawebsite';
 const client = new MongoClient(mongoUrl);
 
 app.listen(PORT, () => {
