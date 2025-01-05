@@ -12,8 +12,6 @@ const mongoUrl =
   'mongodb+srv://admin:admin@cluster0.2lfz3.mongodb.net/Meghawebsite';
 const client = new MongoClient(mongoUrl);
 
-app.listen(PORT, console.log(`Server running on the port number ${PORT}`));
-
 app.get('/klef/test', async function (req, res) {
   res.json('Koneru Lakshmaiah Education Foundation');
 });
