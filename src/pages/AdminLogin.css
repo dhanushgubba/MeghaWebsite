@@ -1,0 +1,79 @@
+
+.adminlogin-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-out forwards;
+}
+
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.adminlogin-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.adminlogin-container label {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+.adminlogin-container input[type="email"],
+.adminlogin-container input[type="text"],
+.adminlogin-container input[type="password"],
+.adminlogin-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #333;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.adminlogin-container input[type="email"]:focus,
+.adminlogin-container input[type="password"]:focus,
+.adminlogin-container textarea:focus {
+    border-color: #5cb85c;
+    background-color: #f0fff0;
+    outline: none;
+}
+
+.adminlogin-container textarea {
+    resize: none;
+    height: 120px;
+}
+.adminlogin-container a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-submit {
+    background-color: #5cb85c;
+    font-size: bold;
+    font-size: 12pt;
+    height: 50px;
+    cursor: pointer;
+    padding: 2px;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-submit:hover {
+    background-color: #5cb85c;
+    transform: scale(1.05);
+    color: white;
+}

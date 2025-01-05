@@ -1,0 +1,84 @@
+/* General container styling */
+.contact-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Header and text */
+.contact-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-container p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* Form styling */
+.contact-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-container label {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Input fields */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-container input:focus,
+.contact-container textarea:focus {
+    border-color: #5cb85c;
+    outline: none;
+}
+
+/* Textarea styling */
+.contact-container textarea {
+    resize: none;
+    height: 120px;
+}
+
+/* Button styling */
+.contact-container button {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-container button:hover {
+    background-color: #4cae4c;
+}
+
+/* Status message */
+.contact-container p.status-message {
+    text-align: center;
+    margin-top: 20px;
+    color: green;
+    font-size: 16px;
+}

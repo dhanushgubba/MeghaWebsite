@@ -1,0 +1,105 @@
+.dashboard-container {
+  width: 100%;
+  padding: 20px;
+}
+
+
+.dashboard-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #81c1ff, #0052cc);
+  color: white;
+  border-radius: 5px;
+  animation: fadeIn 1.2s ease-out forwards; /* Adding forwards to keep the final state */
+}
+
+.dashboard-section h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  animation: slideDown 1s ease-out forwards; /* Adding forwards here as well */
+}
+
+.dashboard-section p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.btn-main {
+  padding: 15px 30px;
+  background-color: white;
+  color: #0052cc;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-main:hover {
+  background-color: #0052cc;
+  color: white;
+  transform: translateY(-5px);
+}
+.services-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.services-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.services {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  background-color: #f0f0f0;
+  width: 300px;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card i {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #0052cc;
+}
+
+.service-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
