@@ -12,12 +12,17 @@ app.listen(PORT, console.log(`Server running on the port number ${PORT}`));
 <<<<<<< HEAD
 /*const mongoUrl =
   'mongodb+srv://admin:admin@cluster0.2lfz3.mongodb.net/Meghawebsite';*/
+<<<<<<< HEAD
 const mongoUrl = 'mongodb://localhost:27017';
 =======
 const mongoUrl =
   'mongodb+srv://gubbadhanush:admin@project0.g5i6y.mongodb.net/?retryWrites=true&w=majority&appName=Project0/Meghawebsite';
 /*const mongoUrl = 'mongodb://localhost:27017';*/
 >>>>>>> main
+=======
+const mongoUrl =
+  'mongodb+srv://gubbadhanush:admin@project0.g5i6y.mongodb.net/?retryWrites=true&w=majority&appName=Project0/Meghawebsite';
+>>>>>>> 26ca3f85f4cf1356863235042c8f39e56ac8f701
 const client = new MongoClient(mongoUrl);
 
 app.get('/klef/test', async function (req, res) {
