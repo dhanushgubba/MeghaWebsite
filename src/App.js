@@ -1,15 +1,17 @@
-import React,{useState} from 'react'; // Ensure useState is imported
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
 import Events from './pages/Events';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Navbar1 from './components/Navbar1';
+/*import Dashboard from './pages/Dashboard';*/
 import AdminLogin from './pages/AdminLogin';
 import AdminRegister from './pages/AdminRegister';
 import ForgotPassword from './pages/ForgotPassword';
@@ -25,65 +27,71 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminCertifications from './pages/AdminCertifications';
 import Certifications from './pages/Certifications';
 
-
 const App = () => {
-  
   const [events, setEvents] = useState([]);
+  const location = useLocation(); // Access current path
 
-  const location = useLocation();
-  
-  const showNavbar = ![
-    '/login',
-    '/register',
+  // Determine which navbar to display
+  const showNavbar = [
     '/',
     '/about',
     '/events',
     '/contact',
-    '/adminlogin',
-    '/adminregister',
+    '/login',
+    '/register',
     '/forgot-password',
-    '/reset-password'
+    '/reset-password',
+    '/myevents',
+    '/mycertifications',
+    '/resources',
+    '/community',
+    '/faqs',
   ].includes(location.pathname);
-  
-  const showAdminNavbar = location.pathname === '/admindashboard' || location.pathname === '/adminevents' ||location.pathname === '/admincertifications' || location.pathname.startsWith('/attendance/');
+
+  const showAdminNavbar = [
+    '/admindashboard',
+    '/adminevents',
+    '/admincertifications',
+  ].some((path) => location.pathname.startsWith(path));
 
   return (
     <div>
-      {!showNavbar && !showAdminNavbar && <Navbar />}
-      {showNavbar && !showAdminNavbar && <Navbar1 />}
+      {/* Conditionally render Navbar */}
+      {showNavbar && <Navbar />}
       {showAdminNavbar && <AdminNavbar />}
 
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/events" element={<Events />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        
-        <Route path="/dashboard" element={<Dashboard />} />
-        
-        {/* Pass events to UserEvents */}
-        <Route path="/myevents" element={<UserEvents events={events} setEvents={setEvents}/>} />  
-        <Route path="/mycertifications" element = {<Certifications />} />
-        
+
+        {/* User Routes */}
+        <Route
+          path="/myevents"
+          element={<UserEvents events={events} setEvents={setEvents} />}
+        />
+        <Route path="/mycertifications" element={<Certifications />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/community" element={<Community />} />
         <Route path="/faqs" element={<Faqs />} />
 
+        {/* Admin Routes */}
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/adminregister" element={<AdminRegister />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
-        <Route path="/attendance/:eventId" element={<Attendance />} />
-        
-
-        {/* Pass events and setEvents to AdminEvents */}
-        <Route path="/adminevents" element={<AdminEvents events={events} setEvents={setEvents} />} />
+        <Route
+          path="/adminevents"
+          element={<AdminEvents events={events} setEvents={setEvents} />}
+        />
         <Route path="/admincertifications" element={<AdminCertifications />} />
+        <Route path="/attendance/:eventId" element={<Attendance />} />
       </Routes>
-      
+
+      {/* Footer */}
       <Footer />
     </div>
   );
