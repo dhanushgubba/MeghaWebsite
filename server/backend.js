@@ -9,8 +9,7 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server running on the port number ${PORT}`));
 
-const mongoUrl =
-  'mongodb+srv://admin:admin@cluster0.azomw.mongodb.net/Meghawebsite';
+const mongoUrl = 'mongodb+srv://admin:admin@cluster0.azomw.mongodb.net/';
 const client = new MongoClient(mongoUrl);
 
 app.get('/klef/test', async function (req, res) {
