@@ -9,9 +9,6 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server running on the port number ${PORT}`));
 
-/*const mongoUrl =
-  'mongodb+srv://gubbadhanush:admin@project0.g5i6y.mongodb.net/?retryWrites=true&w=majority&appName=Project0/Meghawebsite';
-/*const mongoUrl = 'mongodb://localhost:27017';*/
 const mongoUrl =
   'mongodb+srv://admin:admin@cluster0.azomw.mongodb.net/Meghawebsite';
 const client = new MongoClient(mongoUrl);
