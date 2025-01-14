@@ -7,24 +7,12 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = process.env.PORT || 5000;
+app.listen(PORT, console.log(`Server running on the port number ${PORT}`));
 
 const mongoUrl =
   'mongodb+srv://dhanush:dhanush@cluster0.ar7z0.mongodb.net/meghaserver';
-let db;
 const client = new MongoClient(mongoUrl);
 
-MongoClient.connect(mongoUrl, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then((client) => {
-    db = client.db('Meghawebsite');
-    console.log('Connected to MongoDB');
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch((err) => {
-    console.error('Failed to connect to MongoDB', err);
-  });
 app.get('/klef/test', async function (req, res) {
   res.json('Koneru Lakshmaiah Education Foundation');
 });
