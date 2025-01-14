@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server running on the port number ${PORT}`));
 
 const mongoUrl =
-  'mongodb+srv://admin:admin@cluster0.azomw.mongodb.net/meghaapp';
+  'mongodb+srv://dhanush:dhanush@cluster0.ar7z0.mongodb.net/meghaserver';
 const client = new MongoClient(mongoUrl);
 
 app.get('/klef/test', async function (req, res) {
