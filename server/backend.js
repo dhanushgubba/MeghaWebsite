@@ -8,12 +8,11 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
-// MongoDB connection URL
 const mongoUrl =
   'mongodb+srv://dhanush:dhanush@cluster0.ar7z0.mongodb.net/meghaserver';
 let db;
+const client = new MongoClient(mongoUrl);
 
-// Connect to MongoDB when the server starts
 MongoClient.connect(mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -26,22 +25,28 @@ MongoClient.connect(mongoUrl, {
   .catch((err) => {
     console.error('Failed to connect to MongoDB', err);
   });
-
-// Endpoints
-app.get('/klef/test', (req, res) => {
+app.get('/klef/test', async function (req, res) {
   res.json('Koneru Lakshmaiah Education Foundation');
 });
 
-app.post('/klef/cse', (req, res) => {
+app.post('/klef/cse', async function (req, res) {
   res.json(req.body);
 });
 
-app.post('/contact/submit', async (req, res) => {
+app.post('/contact/submit', async function (req, res) {
+  let conn;
   try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
     const collection = db.collection('contact');
+
     const result = await collection.insertOne(req.body);
+
+    await conn.close();
+
     res.status(200).json({ message: 'Contact saved successfully', result });
   } catch (err) {
+    if (conn) await conn.close();
     res
       .status(500)
       .json({ error: 'Failed to save contact', details: err.message });
