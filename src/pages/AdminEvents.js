@@ -15,7 +15,7 @@ const AdminEvents = ({ events, setEvents }) => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/events');
+      const response = await fetch('https://megha-app.onrender.com/api/events');
       const data = await response.json();
       setEvents(data); // Update events in the parent state
     } catch (error) {
@@ -63,7 +63,7 @@ const AdminEvents = ({ events, setEvents }) => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/events/${id}`, {
+      await fetch(`https://megha-app.onrender.com/api/events/${id}`, {
         method: 'DELETE',
       });
       fetchEvents(); // Refresh events after deletion
