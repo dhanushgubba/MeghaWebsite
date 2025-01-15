@@ -21,6 +21,10 @@ app.post('/klef/cse', async function (req, res) {
   res.json(req.body);
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to Megha App!');
+});
+
 app.post('/contact/submit', async function (req, res) {
   let conn;
   try {
