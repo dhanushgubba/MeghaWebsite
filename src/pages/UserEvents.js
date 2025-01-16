@@ -17,7 +17,7 @@ const UserEvents = () => {
   };
 
   // Function to handle registration
-  const registerForEvent = async (eventId) => {
+  /*const registerForEvent = async (eventId) => {
     const collegeid = localStorage.getItem('userID'); // Fetch email from local storage
 
     // Ensure email is available
@@ -50,7 +50,7 @@ const UserEvents = () => {
       setMessage('An error occurred during registration.');
       console.error('Error:', error);
     }
-  };
+  };*/
 
   useEffect(() => {
     fetchEvents();
@@ -68,11 +68,12 @@ const UserEvents = () => {
             <p>{event.date}</p>
             <p>{event.description}</p>
             <img src={event.image} alt={event.title} />
-            <div
+            {/*<div
               className="user-btn"
               onClick={() => registerForEvent(event._id)}
-            >
-              Register Here
+            >*/}
+            <div className="user-btn">
+              <a href="https://academics.klef.in/login">Register Here</a>
             </div>
           </div>
         ))}
