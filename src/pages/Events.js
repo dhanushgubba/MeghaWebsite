@@ -111,7 +111,7 @@ const Events = () => {
             <p>{event.date}</p>
             <p>{event.venue}</p>
             <button className="event-btn">
-              <a href="https://www.academics.klef.in">Register Here</a>
+              <a href="https://www.academics.klef.in/login">Register Here</a>
             </button>
           </div>
         ))}
