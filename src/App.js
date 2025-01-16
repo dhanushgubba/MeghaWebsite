@@ -17,7 +17,6 @@ import AdminRegister from './pages/AdminRegister';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import Resources from './pages/Resources';
-import Community from './pages/Community';
 import Faqs from './pages/Faqs';
 import AdminNavbar from './components/AdminNavbar';
 import AdminEvents from './pages/AdminEvents';
@@ -45,7 +44,6 @@ const App = () => {
     '/myevents',
     '/mycertifications',
     '/resources',
-    '/community',
     '/faqs',
   ].includes(location.pathname);
 
@@ -77,7 +75,6 @@ const App = () => {
         />
         <Route path="/mycertifications" element={<Certifications />} />
         <Route path="/resources" element={<Resources />} />
-        <Route path="/community" element={<Community />} />
         <Route path="/faqs" element={<Faqs />} />
 
         {/* Admin Routes */}
