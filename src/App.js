@@ -38,6 +38,7 @@ const App = () => {
     '/events',
     '/contact',
     '/login',
+    '/adminlogin',
     '/register',
     '/forgot-password',
     '/reset-password',

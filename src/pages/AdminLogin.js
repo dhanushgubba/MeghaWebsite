@@ -81,9 +81,9 @@ const AdminLogin = () => {
         </button>
       </form>
       {statusMessage && <p className="status-message">{statusMessage}</p>}
-      <p>
+      {/*<p>
         Don't have and account?<a href="/adminregister">Register Here</a>
-      </p>
+      </p>*/}
     </div>
   );
 };
