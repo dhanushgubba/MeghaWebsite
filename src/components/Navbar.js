@@ -39,10 +39,6 @@ const Navbar = () => {
           </li>
           <li>
             {' '}
-            <Link to="/community">Community</Link>{' '}
-          </li>
-          <li>
-            {' '}
             <Link to="/faqs">FAQs</Link>{' '}
           </li>
           {/*<Link to="/login" className="navbar-login-button">
