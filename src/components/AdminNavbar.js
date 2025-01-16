@@ -23,7 +23,10 @@ const AdminNavbar = () => {
             <Link to="/adminevents">Events</Link>
           </li>
           <li>
-            <Link to="/admincertifications">Certifications / Vouchers</Link>
+            <Link to="/admincertifications">Certifications</Link>
+          </li>
+          <li>
+            <Link to="/adminvouchers">Vouchers</Link>
           </li>
           <Link to="/adminlogin" className="navbar1-logout-button">
             <button className="logout-button">Logout </button>

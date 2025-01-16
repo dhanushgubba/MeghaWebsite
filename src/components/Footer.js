@@ -26,10 +26,10 @@ const Footer = () => {
             <FaUsers /> <a href="/about">Our Team</a>
           </li>
           <li>
-            <FaTicketAlt /> Vouchers
+            <FaTicketAlt /> <a href="/vouchers">vouchers</a>
           </li>
           <li>
-            <FaListAlt /> <a href="/login">Resources</a>
+            <FaListAlt /> <a href="/resources">Resources</a>
           </li>
           <li>
             <FaPen /> Our Blogs
