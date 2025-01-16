@@ -51,6 +51,7 @@ const App = () => {
     '/admindashboard',
     '/adminevents',
     '/admincertifications',
+    '/adminvouchers',
   ].some((path) => location.pathname.startsWith(path));
 
   return (
@@ -86,6 +87,7 @@ const App = () => {
           element={<AdminEvents events={events} setEvents={setEvents} />}
         />
         <Route path="/admincertifications" element={<AdminCertifications />} />
+        <Route path="/adminvouchers" element={<AdminEvents />} />
         <Route path="/attendance/:eventId" element={<Attendance />} />
       </Routes>
 
