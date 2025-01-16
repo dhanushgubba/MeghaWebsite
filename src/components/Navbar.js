@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link to="/mycertifications">Certifications</Link>
           </li>
           <li>
-            <Link to="myevents">Users</Link>
+            <Link to="myevents">Available Events</Link>
           </li>
           <li>
             {' '}
