@@ -6,6 +6,7 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
   const [editId, setEditId] = useState(null);
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     fetchVouchers();
@@ -47,6 +48,7 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
       }
       fetchVouchers();
       resetForm();
+      setSuccessMessage(editId ? 'Voucher updated!' : 'Voucher added!');
     } catch (error) {
       console.error('Error adding/updating voucher:', error.message);
     }
