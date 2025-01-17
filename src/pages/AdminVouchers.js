@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import 'AdminVouchers.css';
+import './AdminVouchers.css';
 const AdminVouchers = ({ vouchers, setVouchers }) => {
   const [title, setTitle] = useState('');
   const [Expirydate, setExpiryDate] = useState('');
