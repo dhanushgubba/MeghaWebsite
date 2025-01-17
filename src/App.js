@@ -51,6 +51,7 @@ const App = () => {
   const showAdminNavbar = [
     '/admindashboard',
     '/adminevents',
+    '/adminvouchers',
     '/admincertifications',
   ].includes(location.pathname);
 
