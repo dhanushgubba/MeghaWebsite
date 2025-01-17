@@ -533,3 +533,20 @@ app.post('/api/events/:eventId/attendance', async (req, res) => {
     if (conn) await conn.close();
   }
 });
+
+app.post('/api/vouchers', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const newVoucher = { ...req.body, createdAt: new Date() }; // Add timestamp
+    const result = await db.collection('vouchers').insertOne(newVoucher);
+    await conn.close();
+    res.status(201).json(result.ops[0]); // Return the inserted voucher
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to save voucher', details: err.message });
+  }
+});

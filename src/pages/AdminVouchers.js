@@ -89,7 +89,7 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
-          type="text"
+          type="date"
           placeholder="Expiry Date"
           value={expiryDate}
           onChange={(e) => setExpiryDate(e.target.value)}
