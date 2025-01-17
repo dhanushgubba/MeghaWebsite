@@ -534,6 +534,21 @@ app.post('/api/events/:eventId/attendance', async (req, res) => {
   }
 });
 
+app.get('/api/vouchers', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const vouchers = await db.collection('vouchers').find().toArray(); // Get all vouchers
+    res.json(vouchers);
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to fetch vouchers', details: err.message });
+  }
+});
+
 app.post('/api/vouchers', async (req, res) => {
   let conn;
   try {
@@ -548,5 +563,58 @@ app.post('/api/vouchers', async (req, res) => {
     res
       .status(500)
       .json({ error: 'Failed to save voucher', details: err.message });
+  }
+});
+
+app.put('/api/vouchers/:editId', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const { editId } = req.params; // Get the voucher ID from the URL
+    const updatedVoucher = req.body; // Get the updated voucher details from the request body
+
+    const result = await db.collection('vouchers').updateOne(
+      { _id: new ObjectId(editId) }, // Find the voucher by ID
+      { $set: updatedVoucher } // Update all fields in the voucher
+    );
+
+    await conn.close();
+    if (result.modifiedCount > 0) {
+      res.status(200).json({ message: 'Voucher updated successfully' });
+    } else {
+      res.status(404).json({ error: 'Voucher not found or no changes made' });
+    }
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to update voucher', details: err.message });
+  }
+});
+app.delete('/api/vouchers/:id', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const { id } = req.params;
+
+    // Attempt to delete the voucher by ID
+    const result = await db
+      .collection('vouchers')
+      .deleteOne({ _id: new ObjectId(id) }); // Use ObjectId
+
+    await conn.close();
+
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: 'Voucher deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'Voucher not found' });
+    }
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to delete voucher', details: err.message });
   }
 });
