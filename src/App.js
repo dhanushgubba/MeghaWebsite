@@ -51,8 +51,8 @@ const App = () => {
   const showAdminNavbar = [
     '/admindashboard',
     '/adminevents',
-    '/admincertifications',
     '/adminvouchers',
+    '/admincertifications',
   ].some((path) => location.pathname.startsWith(path));
 
   return (
