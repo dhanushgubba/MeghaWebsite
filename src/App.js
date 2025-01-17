@@ -26,6 +26,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminCertifications from './pages/AdminCertifications';
 import Certifications from './pages/Certifications';
 import AdminVouchers from './pages/AdminVouchers';
+import Vouchers from './pages/Vouchers';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -44,6 +45,7 @@ const App = () => {
     '/reset-password',
     '/myevents',
     '/mycertifications',
+    '/vouchers',
     '/resources',
     '/faqs',
   ].includes(location.pathname);
@@ -76,6 +78,7 @@ const App = () => {
           element={<UserEvents events={events} setEvents={setEvents} />}
         />
         <Route path="/mycertifications" element={<Certifications />} />
+        <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/faqs" element={<Faqs />} />
 
