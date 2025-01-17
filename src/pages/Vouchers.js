@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Vouchers.css';
 
 const Vouchers = () => {
   const [vouchers, setVouchers] = useState([]);
