@@ -18,13 +18,10 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
       const response = await fetch(
         'https://megha-app.onrender.com/api/vouchers'
       );
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
       const data = await response.json();
       setVouchers(data);
     } catch (error) {
-      console.error('Error fetching vouchers:', error.message);
+      console.error('Error fetching vouchers:', error);
     }
   };
 
