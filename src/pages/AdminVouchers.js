@@ -98,6 +98,26 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
         />
 
         <button type="submit">{editId ? 'Update' : 'Add'}</button>
+
+        <h2 className="admin-vouchers-current-title">Current Vouchers</h2>
+        <ul className="admin-vouchers-list">
+          {vouchers.map((voucher) => (
+            <li key={voucher._id} className="admin-vouchers-item">
+              <h3 className="admin-vouchers-title">{voucher.title}</h3>
+              <p className="admin-vouchers-Expirydate">{voucher.Expirydate}</p>
+              <p className="admin-vouchers-description">
+                {voucher.description}
+              </p>
+              <img
+                src={voucher.image}
+                alt={voucher.title}
+                className="admin-vouchers-image"
+              />
+              <button onClick={() => handleEdit(voucher)}>Edit</button>
+              <button onClick={() => handleDelete(voucher._id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
