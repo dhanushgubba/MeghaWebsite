@@ -48,7 +48,8 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
       }
       fetchVouchers();
       resetForm();
-      setSuccessMessage(editId ? 'Voucher updated!' : 'Voucher added!');
+      setSuccessMessage('Voucher added successfully!'); // Set the success message
+      setTimeout(() => setSuccessMessage(''), 3000); // Clear the message after 3 seconds
     } catch (error) {
       console.error('Error adding/updating voucher:', error.message);
     }
@@ -83,6 +84,9 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
   return (
     <div className="admin-vouchers-container">
       <h1 className="admin-vouchers-title">Vouchers</h1>
+      {successMessage && (
+        <div className="success-message">{successMessage}</div>
+      )}
       <form className="admin-vouchers-form" onSubmit={handleAddVoucher}>
         <input
           type="text"
