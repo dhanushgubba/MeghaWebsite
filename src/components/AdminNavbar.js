@@ -25,9 +25,6 @@ const AdminNavbar = () => {
           <li>
             <Link to="/admincertifications">Certifications</Link>
           </li>
-          <li>
-            <Link to="/adminvouchers">Vouchers</Link>
-          </li>
           <Link to="/adminlogin" className="navbar1-logout-button">
             <button className="logout-button">Logout </button>
           </Link>
