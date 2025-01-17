@@ -1,0 +1,78 @@
+.vouchers-container {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.message {
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.vouchers-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.voucher-card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.voucher-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.voucher-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.voucher-details {
+  padding: 15px;
+}
+
+.voucher-details h2 {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.voucher-details p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.voucher-details p:last-child {
+  font-weight: bold;
+  color: #007bff;
+}
+
+@media screen and (max-width: 768px) {
+  .vouchers-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .voucher-card {
+    width: 90%;
+  }
+}
