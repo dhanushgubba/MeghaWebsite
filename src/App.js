@@ -25,6 +25,7 @@ import Attendance from './pages/Attendance';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminCertifications from './pages/AdminCertifications';
 import Certifications from './pages/Certifications';
+import AdminVouchers from './pages/AdminVouchers';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -87,7 +88,7 @@ const App = () => {
           element={<AdminEvents events={events} setEvents={setEvents} />}
         />
         <Route path="/admincertifications" element={<AdminCertifications />} />
-        <Route path="/adminvouchers" element={<AdminEvents />} />
+        <Route path="/adminvouchers" element={<AdminVouchers />} />
         <Route path="/attendance/:eventId" element={<Attendance />} />
       </Routes>
 
