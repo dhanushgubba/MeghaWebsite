@@ -619,20 +619,17 @@ app.delete('/api/vouchers/:id', async (req, res) => {
   }
 });
 
-app.post('api/addcertifications', async function (req, res) {
+app.post('api/certifications', async (req, res) => {
   let conn;
   try {
     conn = await client.connect();
     const db = conn.db('Meghawebsite');
-    const collection = db.collection('certifications');
-
-    const result = await collection.insertOne(req.body);
-
+    const newCertification = { ...req.body, createdAt: new Date() }; // Add timestamp
+    const result = await db
+      .collection('certifications')
+      .insertOne(newCertification);
     await conn.close();
-
-    res
-      .status(200)
-      .json({ message: 'Certification saved successfully', result });
+    res.status(201).json(result.ops[0]); // Return the inserted certification
   } catch (err) {
     if (conn) await conn.close();
     res
