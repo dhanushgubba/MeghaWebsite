@@ -77,7 +77,6 @@ const AdminVouchers = ({ vouchers, setVouchers }) => {
       console.error('Error deleting voucher:', error.message);
     }
   };
-
   return (
     <div className="admin-vouchers-container">
       <h1 className="admin-vouchers-title">Vouchers</h1>

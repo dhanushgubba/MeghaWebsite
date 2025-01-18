@@ -618,3 +618,25 @@ app.delete('/api/vouchers/:id', async (req, res) => {
       .json({ error: 'Failed to delete voucher', details: err.message });
   }
 });
+
+app.post('api/addcertifications', async function (req, res) {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const collection = db.collection('certifications');
+
+    const result = await collection.insertOne(req.body);
+
+    await conn.close();
+
+    res
+      .status(200)
+      .json({ message: 'Certification saved successfully', result });
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to save certification', details: err.message });
+  }
+});
