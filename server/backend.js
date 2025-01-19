@@ -655,3 +655,59 @@ app.get('/api/certifications', async (req, res) => {
       .json({ error: 'Failed to fetch certifications', details: err.message });
   }
 });
+app.put('/api/certifications/:editId', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const { editId } = req.params; // Get the event ID from the URL
+    const updatedCertification = req.body; // Get the updated event details from the request body
+
+    const result = await db.collection('certifications').updateOne(
+      { _id: new ObjectId(editId) }, // Find the event by ID
+      { $set: updatedCertification } // Update all fields in the event
+    );
+
+    await conn.close();
+    if (result.modifiedCount > 0) {
+      res.status(200).json({ message: 'Certification updated successfully' });
+    } else {
+      res
+        .status(404)
+        .json({ error: 'Certification not found or no changes made' });
+    }
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to update Certrification', details: err.message });
+  }
+});
+
+// Delete an event
+app.delete('/api/certifications/:id', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const { id } = req.params;
+
+    // Attempt to delete the event by ID
+    const result = await db
+      .collection('certifications')
+      .deleteOne({ _id: new ObjectId(id) }); // Use ObjectId
+
+    await conn.close();
+
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: 'Certification deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'Certification not found' });
+    }
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to delete certification', details: err.message });
+  }
+});
