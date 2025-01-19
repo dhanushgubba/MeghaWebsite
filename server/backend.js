@@ -619,21 +619,18 @@ app.delete('/api/vouchers/:id', async (req, res) => {
   }
 });
 
-app.post('api/certifications', async (req, res) => {
+app.post('/api/certifications', async (req, res) => {
   let conn;
   try {
     conn = await client.connect();
     const db = conn.db('Meghawebsite');
-    const newCertification = { ...req.body, createdAt: new Date() }; // Add timestamp
-    const result = await db
-      .collection('certifications')
-      .insertOne(newCertification);
-    await conn.close();
-    res.status(201).json(result.ops[0]); // Return the inserted certification
+    const newCertification = { ...req.body, createdAt: new Date() };
+    const result = await db.collection('certifications').insertOne(newCertification);
+    res.status(201).json(result.ops[0]);
   } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to save certification', details: err.message });
+  } finally {
     if (conn) await conn.close();
-    res
-      .status(500)
-      .json({ error: 'Failed to save certification', details: err.message });
   }
 });

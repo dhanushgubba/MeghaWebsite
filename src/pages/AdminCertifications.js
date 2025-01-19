@@ -9,7 +9,6 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
 
   useEffect(() => {
     fetchCertifications();
-    //eslint-disable-next-line
   }, []);
 
   const fetchCertifications = async () => {
@@ -17,22 +16,20 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
       const response = await fetch(
         'https://megha-app.onrender.com/api/certifications'
       );
+      if (!response.ok) {
+        throw new Error('Network response was not OK');
+      }
       const data = await response.json();
-      setCertifications(data || []);
+      setCertifications(data);
     } catch (error) {
       console.error('Error fetching certifications:', error);
     }
   };
 
-  const handleAddCertification = async (e) => {
+  const handleAddEvent = async (e) => {
     e.preventDefault();
+    const eventData = { title, description, image };
 
-    if (!title.trim() || !description.trim() || !image.trim()) {
-      alert('Please fill all fields!');
-      return;
-    }
-
-    const certificationData = { title, description, image };
     try {
       if (editId) {
         await fetch(
@@ -40,7 +37,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
           {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(certificationData),
+            body: JSON.stringify(eventData),
           }
         );
         setEditId(null);
@@ -48,9 +45,10 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
         await fetch('https://megha-app.onrender.com/api/certifications', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(certificationData),
+          body: JSON.stringify(eventData),
         });
       }
+
       fetchCertifications();
       setTitle('');
       setDescription('');
@@ -84,16 +82,14 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
         <h1 className="header">Manage Certifications</h1>
 
         <div className="form-container">
-          <form
-            onSubmit={handleAddCertification}
-            className="certification-form"
-          >
+          <form onSubmit={handleAddEvent} className="certification-form">
             <input
               type="text"
               placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="input-field"
+              required
             />
             <input
               type="text"
@@ -101,6 +97,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="input-field"
+              required
             />
             <input
               type="text"
@@ -108,6 +105,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
               value={image}
               onChange={(e) => setImage(e.target.value)}
               className="input-field"
+              required
             />
             <button type="submit" className="submit-button">
               {editId ? 'Update' : 'Add'}
