@@ -79,6 +79,7 @@ const App = () => {
         />
         <Route path="/mycertifications" element={<Certifications />} />
         <Route path="/vouchers" element={<Vouchers />} />
+        <Route path="/certifications" element={<Certifications />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/faqs" element={<Faqs />} />
 
@@ -90,6 +91,15 @@ const App = () => {
           path="/adminevents"
           element={<AdminEvents events={events} setEvents={setEvents} />}
         />
+        {/*<Route
+          path="/admincertifications"
+          element={
+            <AdminCertifications
+              certifications={certifications}
+              setCertifications={setCertifications}
+            />
+          }
+        />*/}
         <Route path="/admincertifications" element={<AdminCertifications />} />
         <Route path="/adminvouchers" element={<AdminVouchers />} />
         <Route path="/attendance/:eventId" element={<Attendance />} />

@@ -643,7 +643,10 @@ app.get('/api/certifications', async (req, res) => {
   try {
     conn = await client.connect();
     const db = conn.db('Meghawebsite');
-    const certifications = await db.collection('certications').find().toArray(); // Get all events
+    const certifications = await db
+      .collection('certifications')
+      .find()
+      .toArray(); // Get all events
     res.json(certifications);
   } catch (err) {
     if (conn) await conn.close();
