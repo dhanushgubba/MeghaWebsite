@@ -111,7 +111,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
             />
             <input
               type="text"
-              placeholder="passscore"
+              placeholder="Pass Score"
               value={passscore}
               onChange={(e) => setPassscore(e.target.value)}
               className="input-field"
@@ -119,7 +119,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
             />
             <input
               type="text"
-              placeholder="price"
+              placeholder="Price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               className="input-field"
@@ -128,7 +128,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
 
             <input
               type="text"
-              placeholder="level"
+              placeholder="level of Certification"
               value={level}
               onChange={(e) => setLevel(e.target.value)}
               className="input-field"
