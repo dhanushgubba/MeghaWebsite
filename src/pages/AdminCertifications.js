@@ -162,14 +162,10 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
                       {certification.description}
                     </p>
                     <p className="certification-passscore">
-                      {certification.passscore};
+                      {certification.passscore}
                     </p>
-                    <p className="certification-price">
-                      {certification.price};
-                    </p>
-                    <p className="certification-level">
-                      {certification.level};
-                    </p>
+                    <p className="certification-price">{certification.price}</p>
+                    <p className="certification-level">{certification.level}</p>
                     <img
                       src={certification.image}
                       alt={certification.title}
