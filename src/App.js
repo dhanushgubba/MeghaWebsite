@@ -31,6 +31,7 @@ import Vouchers from './pages/Vouchers';
 const App = () => {
   const [events, setEvents] = useState([]);
   const [certifications, setCertifications] = useState([]);
+  const [vouchers, setVouchers] = useState([]);
   const location = useLocation(); // Access current path
 
   // Determine which navbar to display
@@ -87,7 +88,10 @@ const App = () => {
             />
           }
         />
-        <Route path="/vouchers" element={<Vouchers />} />
+        <Route
+          path="/vouchers"
+          element={<Vouchers vouchers={vouchers} setVouchers={setVouchers} />}
+        />
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/faqs" element={<Faqs />} />
@@ -110,7 +114,12 @@ const App = () => {
           }
         />
         <Route path="/admincertifications" element={<AdminCertifications />} />
-        <Route path="/adminvouchers" element={<AdminVouchers />} />
+        <Route
+          path="/adminvouchers"
+          element={
+            <AdminVouchers vouchers={vouchers} setVouchers={setVouchers} />
+          }
+        />
         <Route path="/attendance/:eventId" element={<Attendance />} />
       </Routes>
 
