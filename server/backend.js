@@ -625,12 +625,30 @@ app.post('/api/certifications', async (req, res) => {
     conn = await client.connect();
     const db = conn.db('Meghawebsite');
     const newCertification = { ...req.body, createdAt: new Date() };
-    const result = await db.collection('certifications').insertOne(newCertification);
+    const result = await db
+      .collection('certifications')
+      .insertOne(newCertification);
     res.status(201).json(result.ops[0]);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Failed to save certification', details: err.message });
+    res
+      .status(500)
+      .json({ error: 'Failed to save certification', details: err.message });
   } finally {
     if (conn) await conn.close();
+  }
+});
+app.get('/api/certifications', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const certifications = await db.collection('certications').find().toArray(); // Get all events
+    res.json(certifications);
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to fetch certifications', details: err.message });
   }
 });

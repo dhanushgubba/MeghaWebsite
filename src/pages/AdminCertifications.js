@@ -32,7 +32,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
 
   const handleAddEvent = async (e) => {
     e.preventDefault();
-    const eventData = { title, description, image };
+    const eventData = { title, description, passscore, price, level, image };
 
     try {
       if (editId) {
@@ -149,6 +149,7 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
         </div>
 
         <div className="list-container">
+          <h2 className="list-title"> Current Certifications</h2>
           <ul className="certification-list">
             {certifications &&
               certifications.map((certification) => (
@@ -163,8 +164,12 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
                     <p className="certification-passscore">
                       {certification.passscore};
                     </p>
-                    <p className="certification-price">{certification.price}</p>
-                    <p className="certification-level">{certification.level}</p>
+                    <p className="certification-price">
+                      {certification.price};
+                    </p>
+                    <p className="certification-level">
+                      {certification.level};
+                    </p>
                     <img
                       src={certification.image}
                       alt={certification.title}
