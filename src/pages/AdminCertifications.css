@@ -66,21 +66,32 @@
 
 .list-container {
   margin-top: 20px;
+  padding: 0 20px;
+  font-family: 'Arial', sans-serif;
 }
 
 .certification-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .certification-item {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .certification-details {
@@ -88,36 +99,44 @@
 }
 
 .certification-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
+  color: #333;
 }
 
 .certification-description {
   font-size: 14px;
-  color: #555;
-  margin: 5px 0;
+  color: #666;
+  margin: 8px 0;
+  line-height: 1.5;
 }
 
 .certification-image {
   max-width: 100px;
-  border-radius: 4px;
-  margin: 10px 0;
+  border-radius: 6px;
+  margin-left: 15px;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .action-buttons {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .edit-button,
 .delete-button {
-  padding: 8px 10px;
+  padding: 10px 15px;
   font-size: 14px;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .edit-button {
@@ -132,8 +151,42 @@
 
 .edit-button:hover {
   background-color: #e0a800;
+  transform: scale(1.05);
 }
 
 .delete-button:hover {
   background-color: #c82333;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .certification-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .certification-details {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .certification-image {
+    max-width: 80px;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .action-buttons {
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .edit-button,
+  .delete-button {
+    width: 45%;
+  }
 }
