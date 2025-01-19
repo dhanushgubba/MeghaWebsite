@@ -33,9 +33,13 @@ const Certifications = () => {
             <img src={certification.image} alt={certification.title} />
             <h3>{certification.title}</h3>
             <p>{certification.description}</p>
-            <p>Pass Score: {certification.passscore}</p>
+            <p>
+              Pass Score: <strong>{certification.passscore}</strong>
+            </p>
             <p>Price: {certification.price}</p>
-            <p>Level: {certification.level}</p>
+            <p>
+              Level: <strong>{certification.level}</strong>
+            </p>
           </div>
         ))}
       </div>
