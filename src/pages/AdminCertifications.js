@@ -4,11 +4,15 @@ import './AdminCertifications.css'; // Optional: Add custom styles
 const AdminCertifications = ({ certifications, setCertifications }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [passscore, setPassscore] = useState('');
+  const [price, setPrice] = useState('');
+  const [level, setLevel] = useState('');
   const [image, setImage] = useState('');
   const [editId, setEditId] = useState(null);
 
   useEffect(() => {
     fetchCertifications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchCertifications = async () => {
@@ -52,6 +56,9 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
       fetchCertifications();
       setTitle('');
       setDescription('');
+      setPassscore('');
+      setPrice('');
+      setLevel('');
       setImage('');
     } catch (error) {
       console.error('Error adding/updating certification:', error);
@@ -61,6 +68,9 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
   const handleEdit = (certification) => {
     setTitle(certification.title);
     setDescription(certification.description);
+    setPassscore(certification.passscore);
+    setPrice(certification.price);
+    setLevel(certification.level);
     setImage(certification.image);
     setEditId(certification._id);
   };
@@ -101,6 +111,31 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
             />
             <input
               type="text"
+              placeholder="passscore"
+              value={passscore}
+              onChange={(e) => setPassscore(e.target.value)}
+              className="input-field"
+              required
+            />
+            <input
+              type="text"
+              placeholder="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              className="input-field"
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="level"
+              value={level}
+              onChange={(e) => setLevel(e.target.value)}
+              className="input-field"
+              required
+            />
+            <input
+              type="text"
               placeholder="Image URL"
               value={image}
               onChange={(e) => setImage(e.target.value)}
@@ -125,6 +160,11 @@ const AdminCertifications = ({ certifications, setCertifications }) => {
                     <p className="certification-description">
                       {certification.description}
                     </p>
+                    <p className="certification-passscore">
+                      {certification.passscore};
+                    </p>
+                    <p className="certification-price">{certification.price}</p>
+                    <p className="certification-level">{certification.level}</p>
                     <img
                       src={certification.image}
                       alt={certification.title}
