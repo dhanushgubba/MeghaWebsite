@@ -1,73 +1,79 @@
-.certifications-container {
-    padding: 20px;
-    background-color: #f9f9f9;
+/* Certifications.css */
+
+.usercertifications-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
 }
 
-.certification-header h1 {
-    text-align: center;
-    color: black;
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
+.usercertifications-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #333;
 }
 
-.certification-content {
-    display: flex;
+.message {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.usercertifications-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.usercertifications-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.usercertifications-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.usercertifications-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.usercertifications-item h3 {
+  font-size: 1.2rem;
+  margin: 15px 10px 5px;
+  color: #444;
+  text-align: center;
+}
+
+.usercertifications-item p {
+  margin: 10px;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+
+.usercertifications-item p:last-of-type {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .usercertifications-list {
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.certification-section {
-    margin-bottom: 20px;
-}
-
-.certification-card {
-    cursor: pointer;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.certification-card:hover {
-    transform: scale(1.05);
-}
-
-.card-image {
-    width: 200px; /* Adjust the size as needed */
-    height: auto;
-    border-radius: 8px;
-}
-
-.card-title {
-    margin: 10px 0;
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.certification-details {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 10px;
-}
-
-.card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 180px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card-title {
-    margin: 10px 0;
-    font-size: 1.2rem;
-    color: #333;
+  .usercertifications-item {
+    width: 90%;
+  }
 }
