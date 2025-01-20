@@ -711,3 +711,21 @@ app.delete('/api/certifications/:id', async (req, res) => {
       .json({ error: 'Failed to delete certification', details: err.message });
   }
 });
+
+app.post('/api/addadmins', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const newAdmins = { ...req.body, createdAt: new Date() };
+    const result = await db.collection('addadmins').insertOne(newAdmins);
+    res.status(201).json(result.ops[0]);
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ error: 'Failed to add new Admin', details: err.message });
+  } finally {
+    if (conn) await conn.close();
+  }
+});
