@@ -58,7 +58,7 @@ const App = () => {
     '/adminevents',
     '/adminvouchers',
     '/admincertifications',
-    '/adminsadd',
+    '/addadmins',
   ].includes(location.pathname);
 
   return (
