@@ -122,7 +122,7 @@ const App = () => {
             <AdminVouchers vouchers={vouchers} setVouchers={setVouchers} />
           }
         />
-        <Route path="/adminsadd" element={<AdminUsersAdd />} />
+        <Route path="/addadmins" element={<AdminUsersAdd />} />
         <Route path="/attendance/:eventId" element={<Attendance />} />
       </Routes>
 
