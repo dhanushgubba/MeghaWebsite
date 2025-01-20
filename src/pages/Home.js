@@ -36,7 +36,7 @@ const Home = () => {
               Learn about Amazon Web Services, its features, and applications.
             </p>
             <button className="button-type">
-              <Link to="/login" className="join-link">
+              <Link to="/resources" className="join-link">
                 Learn More
               </Link>
             </button>
@@ -45,7 +45,7 @@ const Home = () => {
             <h3>GCP</h3>
             <p>Discover Google Cloud Platform and its powerful tools.</p>
             <button className="button-type">
-              <Link to="/login" className="join-link">
+              <Link to="/resources" className="join-link">
                 Learn More
               </Link>
             </button>
@@ -54,7 +54,7 @@ const Home = () => {
             <h3>Azure</h3>
             <p>Explore Microsoft Azure and its cloud services.</p>
             <button className="button-type">
-              <Link to="/login" className="join-link">
+              <Link to="/resources" className="join-link">
                 Learn More
               </Link>
             </button>
@@ -63,7 +63,7 @@ const Home = () => {
             <h3>IBM Cloud</h3>
             <p>Explore IBM Services and its cloud services.</p>
             <button className="button-type">
-              <Link to="/login" className="join-link">
+              <Link to="/resources" className="join-link">
                 Learn More
               </Link>
             </button>
@@ -72,7 +72,7 @@ const Home = () => {
             <h3>Oracle Cloud</h3>
             <p>Explore Oracle Services and its cloud services.</p>
             <button className="button-type">
-              <Link to="/login" className="join-link">
+              <Link to="/resources" className="join-link">
                 Learn More
               </Link>
             </button>
