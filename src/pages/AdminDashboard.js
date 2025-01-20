@@ -17,7 +17,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="card">
-          <a href="/addadmins">
+          <a href="/adminregister">
             <div className="card-icon">
               <i className="fas fa-user-plus"></i>
             </div>

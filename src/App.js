@@ -27,7 +27,6 @@ import AdminCertifications from './pages/AdminCertifications';
 import Certifications from './pages/Certifications';
 import AdminVouchers from './pages/AdminVouchers';
 import Vouchers from './pages/Vouchers';
-import AdminUsersAdd from './pages/AdminUsersAdd';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -57,8 +56,8 @@ const App = () => {
     '/admindashboard',
     '/adminevents',
     '/adminvouchers',
+    '/adminregister',
     '/admincertifications',
-    '/addadmins',
   ].includes(location.pathname);
 
   return (
@@ -122,7 +121,6 @@ const App = () => {
             <AdminVouchers vouchers={vouchers} setVouchers={setVouchers} />
           }
         />
-        <Route path="/addadmins" element={<AdminUsersAdd />} />
         <Route path="/attendance/:eventId" element={<Attendance />} />
       </Routes>
 

@@ -160,11 +160,8 @@ const AdminRegister = () => {
         />
 
         <button type="regbtn-submit" disabled={isSubmitting}>
-          Admin Register
+          Add Admin
         </button>
-        <p>
-          Already have an account? <a href="/adminlogin">Back to Login</a>
-        </p>
       </form>
       {statusMessage && <p className="status-message">{statusMessage}</p>}
     </div>
