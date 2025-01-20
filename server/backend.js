@@ -717,14 +717,14 @@ app.post('/api/addadmins', async (req, res) => {
   try {
     conn = await client.connect();
     const db = conn.db('Meghawebsite');
-    const newAdmins = { ...req.body, createdAt: new Date() };
-    const result = await db.collection('addadmins').insertOne(newAdmins);
+    const newAdmin = { ...req.body, createdAt: new Date() };
+    const result = await db.collection('adminusers').insertOne(newAdmin);
     res.status(201).json(result.ops[0]);
   } catch (err) {
     console.error(err);
     res
       .status(500)
-      .json({ error: 'Failed to add new Admin', details: err.message });
+      .json({ error: 'Failed to save admin', details: err.message });
   } finally {
     if (conn) await conn.close();
   }
