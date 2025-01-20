@@ -60,36 +60,36 @@
 .admin-cards {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px; /* Increased gap for better spacing */
   margin-top: 20px;
 }
 
 .card {
-  width: 150px;
-  height: 150px;
-  background-color: #f5f5f5;
+  width: 200px; /* Increased width */
+  height: 200px; /* Increased height */
+  background-color: #ffffff; /* Slightly lighter background for contrast */
   border: 1px solid #ddd;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for depth */
   text-align: center;
-  padding: 20px;
+  padding: 25px; /* Increased padding */
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px); /* Slightly higher lift on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
 }
 
 .card-icon {
-  font-size: 40px;
+  font-size: 50px; /* Increased icon size */
   color: #007bff;
-  margin-bottom: 10px;
+  margin-bottom: 15px; /* Increased space between icon and text */
 }
 
 .card p {
-  font-size: 16px;
+  font-size: 18px; /* Slightly larger font size for readability */
   color: #333;
   margin: 0;
 }

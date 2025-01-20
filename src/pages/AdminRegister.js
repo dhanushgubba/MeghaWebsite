@@ -54,6 +54,7 @@ const AdminRegister = () => {
         setStatusMessage('Registration successful!');
         // Clear form data if needed
         setFormData({
+          idno: '',
           firstname: '',
           lastname: '',
           email: '',
