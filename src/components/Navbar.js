@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Ensure this file exists and contains the CSS styles
+import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,9 +13,10 @@ const Navbar = () => {
     <nav className={`navbar ${isOpen ? 'open' : ''}`}>
       <div className="navbar-left">
         <img src="imag.jpeg" alt="Logo" className="navbar-logo" />
-        <span className="club-name">Club Name</span>
+        <span className="club-name">MEGHA</span>
       </div>
 
+      {/* Hamburger menu icon */}
       <div className="navbar-menu-toggle" onClick={toggleMenu}>
         <span></span>
         <span></span>
