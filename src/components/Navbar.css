@@ -7,10 +7,14 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  height: 70px; /* Set a fixed height for the navbar */
+}
+
+body {
+  padding-top: 70px; /* Add space below the navbar equal to its height */
 }
 
 .navbar-left {
@@ -19,7 +23,7 @@
 }
 
 .navbar-logo {
-  width: 40px;
+  width: 50px;
   height: auto;
   margin-right: 1rem;
 }

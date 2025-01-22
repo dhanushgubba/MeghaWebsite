@@ -125,7 +125,7 @@ const App = () => {
       </Routes>
 
       {/* Footer */}
-      <Footer />
+      {showNavbar && <Footer />}
     </div>
   );
 };
