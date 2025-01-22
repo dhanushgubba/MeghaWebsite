@@ -1,16 +1,16 @@
 /* Styling the navbar */
 .navbar {
-  background: linear-gradient(135deg, #001f3f, blue);
+  background: linear-gradient(135deg, #001f3f, blue); /* Gradient background */
   color: white;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.5rem; /* Decreased padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 10;
+  overflow: hidden; /* Prevent content overflow */
 }
 
 .navbar-left {
@@ -19,116 +19,104 @@
 }
 
 .navbar-logo {
-  width: 40px;
+  width: 40px; /* Decreased logo size */
   height: auto;
   margin-right: 1rem;
 }
 
 .club-name {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* Decreased font size */
   color: #f0f0f0;
-  margin: 0;
-}
-
-.hamburger-menu {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 0.5rem;
+  margin-right: 1.5rem; /* Adjusted margin */
 }
 
 .navbar-right {
   display: flex;
-  align-items: center;
+  align-items: center; /* Align items vertically in the center */
 }
 
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.5rem; /* Decreased gap between links */
   margin: 0;
-  padding: 0;
+}
+
+.navbar-links li {
+  display: flex; /* Ensure li items align properly */
+  align-items: center; /* Align links vertically in the center */
 }
 
 .navbar-links li a {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1rem; /* Decreased font size */
   font-family: 'Poppins', sans-serif;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  padding: 0.5rem 0.75rem; /* Adjusted padding */
+  border-radius: 4px; /* Slightly smaller border radius */
+  transition: background-color 0.3s ease, transform 0.2s; /* Added transition for transform */
 }
 
 .navbar-links li a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
+  background-color: #f0f0f0;
+  color: #1a1a2e;
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.navbar-login-button {
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.navbar-adminlogin-button {
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.login-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.4rem 1rem; /* Decreased padding */
+  border: none;
+  cursor: pointer;
+  font-size: 1rem; /* Decreased font size */
+  border-radius: 4px; /* Match button with the navbar links */
+  transition: background-color 0.3s ease, transform 0.2s; /* Added transition for transform */
+}
+
+.login-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .adminlogin-button {
   background-color: #4caf50;
   color: white;
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 1rem; /* Decreased padding */
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  font-size: 1rem; /* Decreased font size */
+  border-radius: 4px; /* Match button with the navbar links */
+  transition: background-color 0.3s ease, transform 0.2s; /* Added transition for transform */
 }
 
 .adminlogin-button:hover {
-  background-color: #45a049;
-  transform: translateY(-2px);
+  color: white;
+  transform: translate(1.02);
 }
 
-/* Mobile Styles */
+/* Responsive design */
 @media (max-width: 768px) {
-  .hamburger-menu {
-    display: block;
-  }
-
-  .navbar-right {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #001f3f, blue);
-    padding: 1rem;
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .navbar-right.active {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
+  .navbar {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: flex-start;
+    padding: 1rem; /* Add some padding */
   }
 
   .navbar-links {
-    flex-direction: column;
+    flex-direction: column; /* Stack links vertically */
     gap: 1rem;
-    width: 100%;
-  }
-
-  .navbar-links li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .navbar-links li a {
-    display: block;
-    padding: 0.75rem;
-    width: 100%;
-  }
-
-  .adminlogin-button {
-    width: 100%;
     margin-top: 1rem;
-    text-align: center;
   }
 }
