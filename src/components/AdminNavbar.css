@@ -1,110 +1,150 @@
-/* Styling the vertical navbar */
+/* Base navbar styling */
 .adminnavbar {
-  background: linear-gradient(135deg, #001f3f, blue); /* Gradient background */
+  background: linear-gradient(135deg, #001f3f, blue);
   color: white;
-  width: 250px; /* Set width for the vertical navbar */
-  height: 100vh; /* Full viewport height */
-  padding: 1rem; /* Adjusted padding for vertical layout */
+  width: 250px;
+  height: 100vh;
+  padding: 1.5rem;
   display: flex;
-  flex-direction: column; /* Stack items vertically */
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   box-shadow: 4px 0 8px rgba(0, 0, 0, 0.15);
-  position: fixed; /* Fix the navbar to the side */
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
 }
 
 .adminnavbar-left {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: flex-start; /* Align items to the left */
-  margin-bottom: 2rem; /* Add spacing below logo section */
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 .adminnavbar-logo {
-  width: 50px; /* Adjust logo size */
-  height: auto;
-  margin-bottom: 1rem; /* Space between logo and text */
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
 }
 
 .club-names {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   color: #f0f0f0;
-  margin-bottom: 2rem; /* Space below the title */
+  text-align: center;
+  margin: 0;
 }
 
 .adminnavbar-right {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: flex-start;
-  width: 100%; /* Ensure items span full width */
+  width: 100%;
 }
 
 .adminnavbar-links {
   list-style: none;
-  display: flex;
-  flex-direction: column; /* Stack links vertically */
-  gap: 1rem; /* Space between links */
   padding: 0;
   margin: 0;
-  width: 100%; /* Ensure links span full width */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .adminnavbar-links li {
-  display: flex; /* Ensure li items align properly */
-  align-items: center; /* Align links vertically in the center */
-  width: 100%; /* Ensure items span full width */
+  width: 100%;
 }
 
 .adminnavbar-links li a {
   color: white;
   text-decoration: none;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
-  padding: 0.75rem 1rem; /* Adjusted padding */
-  border-radius: 4px; /* Rounded edges */
-  transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition */
-  width: 100%; /* Make links span full width */
-  display: block; /* Ensure clickable area spans full width */
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  display: block;
+  transition: all 0.3s ease;
 }
 
 .adminnavbar-links li a:hover {
-  background-color: #f0f0f0;
-  color: #1a1a2e;
-  transform: scale(1.05); /* Slight scale effect on hover */
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
 }
 
-.adminnavbar-login-button {
-  text-decoration: none;
-  margin-top: 2rem; /* Space above the login button */
-  width: 100%; /* Ensure it spans full width */
+.logout-container {
+  margin-top: auto;
+  padding-top: 2rem;
 }
 
 .logout-button {
   background-color: #4caf50;
   color: white;
-  padding: 0.75rem 1rem; /* Adjusted padding */
+  padding: 0.75rem 1rem;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition */
-  width: 100%; /* Ensure button spans full width */
-  text-align: center; /* Center text */
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
   background-color: #45a049;
-  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Mobile menu button */
+.mobile-menu-button {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+  background: #001f3f;
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+  background-color: #003366;
+}
+
+/* Mobile overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .adminnavbar {
-    width: 200px; /* Reduce navbar width on smaller screens */
+    transform: translateX(-100%);
+    width: 280px;
+  }
+
+  .adminnavbar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-overlay {
+    display: block;
   }
 }
