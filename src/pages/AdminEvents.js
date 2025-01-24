@@ -85,7 +85,7 @@ const AdminEvents = ({ events, setEvents }) => {
           className="admin-events-input"
         />
         <input
-          type="text"
+          type="date"
           placeholder="Event Date"
           value={date}
           onChange={(e) => setDate(e.target.value)}

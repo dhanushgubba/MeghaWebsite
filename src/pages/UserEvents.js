@@ -3,7 +3,7 @@ import './UserEvents.css';
 
 const UserEvents = () => {
   const [events, setEvents] = useState([]);
-  const [message, setMessage] = useState(''); // State to show feedback message
+  const [message, setMessage] = useState('');
 
   const fetchEvents = async () => {
     try {
@@ -16,64 +16,57 @@ const UserEvents = () => {
     }
   };
 
-  // Function to handle registration
-  /*const registerForEvent = async (eventId) => {
-    const collegeid = localStorage.getItem('userID'); // Fetch email from local storage
-
-    // Ensure email is available
-    if (!collegeid) {
-      setMessage(
-        'User is not logged in. Please log in to register for events.'
-      );
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `http://localhost:5000/api/events/${eventId}/register`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ collegeid }),
-        }
-      );
-      const result = await response.json();
-
-      if (response.ok) {
-        setMessage(`Successfully registered for ${result.title}`);
-      } else {
-        setMessage(`Failed to register: ${result.error || result.message}`);
-      }
-    } catch (error) {
-      setMessage('An error occurred during registration.');
-      console.error('Error:', error);
-    }
-  };*/
-
   useEffect(() => {
     fetchEvents();
   }, []);
 
+  const formatDate = (dateString) => {
+    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  };
+
   return (
     <div className="userevents-container">
-      <h1>User Events</h1>
-      {message && <div className="message">{message}</div>}{' '}
-      {/* Display feedback message */}
+      <div className="userevents-header">
+        <h1>Upcoming Events</h1>
+        {message && <div className="message error">{message}</div>}
+      </div>
+
       <div className="userevents-list">
         {events.map((event) => (
           <div className="events-card" key={event._id}>
-            <h2>{event.title}</h2>
-            <p>{event.date}</p>
-            <p>{event.description}</p>
-            <img src={event.image} alt={event.title} />
-            {/*<div
-              className="user-btn"
-              onClick={() => registerForEvent(event._id)}
-            >*/}
-            <div className="user-btn">
-              <a href="https://academics.klef.in/login">Register Here</a>
+            <div className="events-card-image">
+              <img src={event.image} alt={event.title} />
+              <div className="events-card-date">
+                <span className="date-icon">📅</span>
+                {formatDate(event.date)}
+              </div>
+            </div>
+            <div className="events-card-content">
+              <div className="events-card-badge">Featured Event</div>
+              <h2>{event.title}</h2>
+              <p>{event.description}</p>
+              <div className="events-card-footer">
+                <div className="events-meta">
+                  <span className="events-location">
+                    <span className="meta-icon">📍</span> KL University
+                  </span>
+                  <span className="events-time">
+                    <span className="meta-icon">⏰</span> 10:00 AM
+                  </span>
+                </div>
+                <div className="user-btn-wrapper">
+                  <a
+                    href="https://academics.klef.in/login"
+                    className="user-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Register Now
+                    <span className="btn-arrow">→</span>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         ))}
