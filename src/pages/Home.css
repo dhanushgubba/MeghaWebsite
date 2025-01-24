@@ -34,6 +34,7 @@ body {
   opacity: 0;
   transform: translateY(50px);
   animation: fadeInUp 1.2s ease-out forwards;
+  margin-top: 100px;
 }
 
 .hero-section h1 {
