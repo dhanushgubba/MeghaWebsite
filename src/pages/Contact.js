@@ -1,114 +1,166 @@
 import React, { useState } from 'react';
-import './Contact.css'; // Importing the CSS file
+import './Contact.css';
 
-const Contact = () => {
+function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
-  const [statusMessage, setStatusMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false); // To manage submit state
+  const [status, setStatus] = useState({ type: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const { name, email, message } = formData;
-
-    if (name === '' || email === '' || message === '') {
-      setStatusMessage('All fields are required.');
-      return;
-    }
-
     setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
     try {
       const response = await fetch(
         'https://megha-app.onrender.com/contact/submit',
         {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-          }),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
         }
       );
 
       if (response.ok) {
-        setStatusMessage('Message sent successfully!');
-        setFormData({
-          name: '',
-          email: '',
-          message: '',
+        setStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully.',
         });
+        setFormData({ name: '', email: '', message: '' });
       } else {
-        setStatusMessage('Failed to send the message. Please try again later.');
+        setStatus({
+          type: 'error',
+          message: 'Failed to send message. Please try again.',
+        });
       }
     } catch (error) {
-      setStatusMessage('Error sending the message. Please try again.');
+      setStatus({
+        type: 'error',
+        message: 'An error occurred. Please try again later.',
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="contact-container">
-      <br />
-      <h1>Contact Us</h1>
-      <p>Email: meghacloudclub@example.com</p>
+    <div className="contact-wrapper">
+      <div className="contact-container">
+        <div className="contact-card">
+          {/* Header Section */}
+          <div className="contact-header">
+            <h2>Get in Touch</h2>
+            <p>
+              We'd love to hear from you. Send us a message and we'll respond as
+              soon as possible.
+            </p>
+          </div>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Your Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Enter your name"
-          required
-        />
+          {/* Form Section */}
+          <div className="contact-form-container">
+            <form onSubmit={handleSubmit}>
+              {/* Name Input */}
+              <div className="form-group">
+                <label htmlFor="name">Your Name</label>
+                <div className="input-with-icon">
+                  <i className="fas fa-user input-icon"></i>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+              </div>
 
-        <label htmlFor="email">Your Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter your email"
-          required
-        />
+              {/* Email Input */}
+              <div className="form-group">
+                <label htmlFor="email">Your Email</label>
+                <div className="input-with-icon">
+                  <i className="fas fa-envelope input-icon"></i>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="john@example.com"
+                    required
+                  />
+                </div>
+              </div>
 
-        <label htmlFor="message">Your Message</label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Enter your message"
-          rows="5"
-          required
-        />
+              {/* Message Input */}
+              <div className="form-group">
+                <label htmlFor="message">Your Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="How can we help you?"
+                  rows="4"
+                  required
+                />
+              </div>
 
-        <button type="submit" disabled={isSubmitting}>
-          Send Message
-        </button>
-      </form>
-      {statusMessage && <p className="status-message">{statusMessage}</p>}
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
+              >
+                {isSubmitting ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin button-icon"></i>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-paper-plane button-icon"></i>
+                    Send Message
+                  </>
+                )}
+              </button>
+
+              {/* Status Message */}
+              {status.message && (
+                <div className={`status-message ${status.type}`}>
+                  {status.message}
+                </div>
+              )}
+            </form>
+
+            {/* Contact Info */}
+            <div className="contact-info">
+              <a
+                href="mailto:meghacloudclub@example.com"
+                className="email-link"
+              >
+                <i className="fas fa-envelope email-icon"></i>
+                meghacloudclub@example.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Contact;
