@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Base styles */
 * {
   box-sizing: border-box;
@@ -6,7 +10,7 @@
 }
 
 .about-container {
-  padding: 4rem 2rem;
+  padding: 2rem 1rem;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   color: #2d3748;
@@ -19,15 +23,16 @@
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   overflow: hidden;
   transition: transform 0.3s ease;
 }
 
 .intro-content {
   display: flex;
-  gap: 3rem;
-  padding: 3rem;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
 }
 
 .text-container {
@@ -36,9 +41,9 @@
 }
 
 .text-container h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #1a202c;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   font-weight: 800;
   position: relative;
   display: inline-block;
@@ -56,11 +61,11 @@
 }
 
 .about-paragraph {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #4a5568;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   text-align: left;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .about-paragraph strong {
@@ -69,11 +74,9 @@
 }
 
 .images-container {
-  flex: 1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
 .intro-image {
@@ -86,10 +89,50 @@
 }
 
 .intro-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
+/* Tablet and up */
+@media (min-width: 640px) {
+  .about-container {
+    padding: 3rem 1.5rem;
+  }
+
+  .intro-content {
+    padding: 2rem;
+  }
+
+  .images-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .about-container {
+    padding: 4rem 2rem;
+  }
+
+  .intro-content {
+    flex-direction: row;
+    gap: 3rem;
+    padding: 3rem;
+  }
+
+  .text-container h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-paragraph {
+    font-size: 1.1rem;
+  }
+
+  .images-container {
+    gap: 1.5rem;
+  }
+}
 /* Mission Section */
 .mission-section {
   background: linear-gradient(135deg, #4c51bf, #6b46c1);

@@ -171,7 +171,7 @@ const Events = () => {
   return (
     <div className="events-container">
       <div className="events-header">
-        <h1 className="fadeIn">Upcoming Cloud Events</h1>
+        <h1 className="fadeIn">Past Cloud Events</h1>
         <p className="events-subtitle">
           Discover and participate in exciting cloud computing events
         </p>
