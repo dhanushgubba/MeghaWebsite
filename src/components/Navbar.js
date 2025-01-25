@@ -57,6 +57,11 @@ const Navbar = () => {
             </a>
           </li>
           <li>
+            <a href="/gallery" onClick={() => setIsOpen(false)}>
+              Gallery
+            </a>
+          </li>
+          <li>
             <a href="/mycertifications" onClick={() => setIsOpen(false)}>
               Certifications
             </a>

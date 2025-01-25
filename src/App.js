@@ -27,6 +27,7 @@ import AdminCertifications from './pages/AdminCertifications';
 import Certifications from './pages/Certifications';
 import AdminVouchers from './pages/AdminVouchers';
 import Vouchers from './pages/Vouchers';
+import Gallery from './pages/Gallery';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -49,6 +50,7 @@ const App = () => {
     '/mycertifications',
     '/vouchers',
     '/resources',
+    '/gallery',
     '/faqs',
   ].includes(location.pathname);
 
@@ -96,6 +98,7 @@ const App = () => {
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/faqs" element={<Faqs />} />
+        <Route path="/gallery" element={<Gallery />} />
 
         {/* Admin Routes */}
         <Route path="/adminlogin" element={<AdminLogin />} />
