@@ -711,3 +711,91 @@ app.delete('/api/certifications/:id', async (req, res) => {
       .json({ error: 'Failed to delete certification', details: err.message });
   }
 });
+
+//GALLERY SECTION CODE
+app.post('/api/gallery', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const newGallery = { ...req.body, createdAt: new Date() };
+    const result = await db.collection('gallery').insertOne(newGallery);
+    res.status(201).json(result.ops[0]);
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ error: 'Failed to save gallery', details: err.message });
+  } finally {
+    if (conn) await conn.close();
+  }
+});
+
+app.get('/api/gallery', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const gallery = await db.collection('gallery').find().toArray(); // Get all events
+    res.json(gallery);
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to fetch gallery', details: err.message });
+  }
+});
+
+app.put('/api/gallery/:editId', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const { editId } = req.params; // Get the event ID from the URL
+    const updatedGallery = req.body; // Get the updated event details from the request body
+
+    const result = await db.collection('gallery').updateOne(
+      { _id: new ObjectId(editId) }, // Find the event by ID
+      { $set: updatedGallery } // Update all fields in the event
+    );
+
+    await conn.close();
+    if (result.modifiedCount > 0) {
+      res.status(200).json({ message: 'Gallery updated successfully' });
+    } else {
+      res.status(404).json({ error: 'Gallery not found or no changes made' });
+    }
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to update Gallery', details: err.message });
+  }
+});
+
+app.delete('/api/gallery/:id', async (req, res) => {
+  let conn;
+  try {
+    conn = await client.connect();
+    const db = conn.db('Meghawebsite');
+    const { id } = req.params;
+
+    // Attempt to delete the event by ID
+    const result = await db
+      .collection('gallery')
+      .deleteOne({ _id: new ObjectId(id) }); // Use ObjectId
+
+    await conn.close();
+
+    if (result.deletedCount > 0) {
+      res.status(200).json({ message: 'Gallery deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'Gallery not found' });
+    }
+  } catch (err) {
+    if (conn) await conn.close();
+    res
+      .status(500)
+      .json({ error: 'Failed to delete gallery', details: err.message });
+  }
+});

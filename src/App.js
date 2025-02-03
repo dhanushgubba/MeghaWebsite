@@ -28,11 +28,13 @@ import Certifications from './pages/Certifications';
 import AdminVouchers from './pages/AdminVouchers';
 import Vouchers from './pages/Vouchers';
 import Gallery from './pages/Gallery';
+import AdminGallery from './pages/AdminGallery';
 
 const App = () => {
   const [events, setEvents] = useState([]);
   const [certifications, setCertifications] = useState([]);
   const [vouchers, setVouchers] = useState([]);
+  const [gallery, setGallery] = useState([]);
   const location = useLocation(); // Access current path
 
   // Determine which navbar to display
@@ -60,6 +62,7 @@ const App = () => {
     '/adminvouchers',
     '/adminregister',
     '/admincertifications',
+    '/admingallery',
   ].includes(location.pathname);
 
   return (
@@ -123,6 +126,10 @@ const App = () => {
           element={
             <AdminVouchers vouchers={vouchers} setVouchers={setVouchers} />
           }
+        />
+        <Route
+          path="/admingallery"
+          element={<AdminGallery gallery={gallery} setGallery={setGallery} />}
         />
         <Route path="/attendance/:eventId" element={<Attendance />} />
       </Routes>

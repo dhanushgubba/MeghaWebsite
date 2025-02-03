@@ -1,0 +1,128 @@
+/* AdminGallery.css */
+
+.admin-gallery-container {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.admin-gallery-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.admin-gallery-title h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.admin-gallery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.admin-gallery-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.admin-gallery-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-gallery-form button:hover {
+  background-color: #0056b3;
+}
+
+.gallery-list {
+  margin-top: 40px;
+}
+
+.gallery-list h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.gallery-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.gallery-info {
+  padding: 15px;
+}
+
+.gallery-info h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.gallery-info p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0;
+}
+
+.gallery-info button {
+  padding: 8px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.gallery-info button:hover {
+  background-color: #218838;
+}
+
+.gallery-info button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+.gallery-info button:nth-child(2):hover {
+  background-color: #c82333;
+}
+
+.no-gallery-message {
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+}

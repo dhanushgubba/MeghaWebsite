@@ -83,6 +83,11 @@ const AdminNavbar = () => {
                 Vouchers
               </Link>
             </li>
+            <li>
+              <Link to="/admingallery" onClick={() => setIsOpen(false)}>
+                Admin Gallery
+              </Link>
+            </li>
             <li className="logout-container">
               <Link
                 to="/adminlogin"
